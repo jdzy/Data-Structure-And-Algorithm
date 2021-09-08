@@ -3,6 +3,7 @@ void MergeList_Sq(SqList La,SqList Lb,SqList &Lc) {
     int *pb=Lb.elem;
     Lc.listsize=Lc.length=La.length+Lb.length;
     int *pc=Lc.elem=(int *)malloc(Lc.listsize*sizeof(int));
+    if(!Lc.elem) exit(OVERFLOW);
 
     int *La_last=La.elem+La.length-1;
     int *Lb_last=Lb.elem+Lb.length-1;
