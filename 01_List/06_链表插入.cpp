@@ -9,7 +9,7 @@ int ListInsert_L(LinkList &L,int i,int e)
     }
     if(!p || j>i-1) return ERROR;
 
-    s=(LinkList)malloc(sizeof(LNode));
+    LinkList s=(LinkList)malloc(sizeof(LNode));
     s->next=p->next;
     s->data=e;
     p->next=s;
