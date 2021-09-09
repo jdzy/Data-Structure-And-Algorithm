@@ -16,8 +16,8 @@ typedef struct LNode {
 
 //逆位序创建一个链表
 void CreateList_L(LinkList &L,int n) {
-    L=(LinkList)malloc(sizeof(LNode));
-    L->next=NULL;
+    //L=(LinkList)malloc(sizeof(LNode));
+    //L->next=NULL;
 
     for(int i=n;i>0;--i) 
     {
@@ -88,27 +88,30 @@ void MergeList_L(LinkList &La,LinkList &Lb,LinkList &Lc)
     //La、Lb非递减排列
     LinkList pa=La->next;
     LinkList pb=Lb->next;
-    LinkList pc=Lc=La;
+    LinkList pc;
+    Lc=pc=La;
     while(pa && pb)
     {
         if(pa->data<=pb->data)
         {
             pc->next=pa;
             pc=pa;
-            pc->data=pa->data;
+            pa=pa->next;
+            //cout<<"This is a test  ------pa"<<endl;
         }
         else
         {
             pc->next=pb;
             pc=pb;
-            pc->data=pb->data;
+            pb=pb->next;
+            //cout<<"This is a test  ------pb"<<endl;
         }
 
-        pc->next=pa? pa:pb;
-
-        //free(Lb)   释放Lb头节点
-
     }
+    //cout<<"This is a test"<<endl;
+    pc->next=pa?pa:pb;
+
+     //free(Lb)   释放Lb头节点
 }
 
 
@@ -135,8 +138,12 @@ void Menu() {
 
 int main() {
     int i,n,e,flag;
-    LinkList La,Lb,Lc;
-    //La->next=Lb->next=Lc->next=NULL;
+
+    //对La、Lb、Lc初始化，如果不提前初始化后面没法进行
+    LinkList La=(LinkList)malloc(sizeof(LNode));
+    LinkList Lb=(LinkList)malloc(sizeof(LNode));
+    LinkList Lc=(LinkList)malloc(sizeof(LNode));
+    La->next=Lb->next=Lc->next=NULL;
 
     while(true) {
         Menu();
@@ -185,6 +192,8 @@ int main() {
                  }
 
             }
+            break;
+
             case 3:
             {
                 cout<<"请输入想删除的线性表，La输入1，Lb输入2 ：";
