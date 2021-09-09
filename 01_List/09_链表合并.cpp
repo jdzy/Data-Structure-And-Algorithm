@@ -10,18 +10,18 @@ void MergeList_L(LinkList &La,LinkList &Lb,LinkList &Lc)
         {
             pc->next=pa;
             pc=pa;
-            pc->data=pa->data;
+            pa=pa->next;
         }
         else
         {
             pc->next=pb;
             pc=pb;
-            pc->data=pb->data;
+            pb=pb->next;
         }
 
-        pc->next=pa? pa:pb;
-
-        //free(Lb)   释放Lb头节点
-
     }
+    
+    pc->next=pa? pa:pb;
+
+    //free(Lb)   释放Lb头节点
 }
