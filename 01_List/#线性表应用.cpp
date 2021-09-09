@@ -10,6 +10,7 @@ using namespace std;
 #define LISTINCREMENT 10
 
 typedef struct {
+    
     int *elem;  //基址
     int length;  //当前长度
     int listsize;  //分配的容量
