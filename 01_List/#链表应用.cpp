@@ -6,9 +6,6 @@ using namespace std;
 #define ERROR 0
 #define OVERFLOW -2
 
-#define LIST_INIT_SIZE 100
-#define LISTINCREMENT 10
-
 typedef struct LNode {
     int data;
     struct LNode *next;
