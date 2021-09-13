@@ -34,6 +34,21 @@ int Push(SqStack &S,int e)
 {
     if(S.top-S.base>=S.stacksize)
     {
+        S.base=(int *)realloc(S.base,(S.stacksize+STACKINCREMENT)*sizeof(int));
+        if(!base) exit(OVERFLOW);
 
+        S.top=S.base+S.stacksize;
+        S.stacksize +=STACKINCREMENT;
     }
+
+    *S.top++=e;
+
+    return OK;
+}
+
+int Pop(SqStack &S,int &e)
+{
+    if(S.top==S.base)  return ERROR;
+    e=*--S.top;
+    return OK;
 }
